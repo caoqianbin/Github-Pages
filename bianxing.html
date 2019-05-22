@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: relative;
+            width: 400px;
+            height: 470px;
+            overflow:hidden;
+            box-shadow:
+                        -5px 0px 5px #c4c0c0,   /*左边阴影*/ 
+                        0px -5px 5px #c4c0c0,  /*上边阴影*/ 
+                        5px 0px 5px #c4c0c0,  /*右边阴影*/ 
+                        0px 5px 5px #c4c0c0;
+        }
+        #head{
+            width: 400px;
+            height: 250px;
+            position: absolute;
+            z-index: 10;
+        }
+        #img1{
+            position:absolute;
+            width: 400px;
+            height:250px;
+            float: left;
+            z-index: 10;
+            transition:0.6s;
+        }
+        #canvas{
+            position:absolute;
+            z-index: 20;
+        }
+        #mm{
+            width: 400px;
+            height: 250px;
+            position: absolute;
+            z-index: 20;
+            bottom: 0px;
+            transition:height 0.6s;
+        }
+        .photo{            
+            width: 55px;
+            height: 25px;
+            background:#fd7546; 
+            color:white;
+            line-height:25px;
+            font-size: 13px;
+            text-align: center;           
+        }
+        #middle{
+            width: 400px;
+            height: 130px;           
+        }
+        .qingdao{
+            font-size: 23px;
+            font-weight: 800;
+            margin-top: 20px;
+            margin-left: 20px;
+            float: left;
+        }
+        .two{
+            font-size:18px;
+            margin-top: 14px;
+            margin-right: 182px;           
+            font-size: 20px;
+            color: #fd7546;
+            float: right;           
+        }
+        #kongbai{
+            position: absolute;
+            width: 400px;
+            height: 170px;
+            background: white;
+            color: #646b73;            
+            top: 120px;
+        }
+        #kongbai1{
+            position: absolute;
+            width: 330px;
+            display:none;
+            left: 20px;
+            line-height: 30px;
+        }
+        #nn{
+            background: white;
+            width: 400px;
+            height: 110px;
+
+        }
+        .bottom{
+            position: absolute;
+            font-size: 13px;
+            color: #c4c0c0;
+            left: 22px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"> 
+        <div id="head">
+            <canvas id="canvas"></canvas> 
+            <img src="./tupian.jpg" id="img1"/>  
+        </div>                                                    
+        <div id="mm">
+            <div id="middle">
+                <div class="photo">照片</div>
+                <div id="nn">
+                    <p class="qingdao">青岛栈桥</p>
+                    <p class="two">国家AAAA级旅游景区</p>
+                </div>                
+            </div>
+            <div id="kongbai">
+                <p id="kongbai1">青岛栈桥是青岛海滨风景区的景点之一，是国务院于1982年首批公布的国家级风景名胜区。
+                    青岛栈桥位于游人如织的青岛中山路南端，桥身从海岸探入弯月般的青岛深处。
+                    桥身供游人参观并在此停靠旅游船，由此乘船可看海上青岛
+                </p>
+            </div>
+            <div class="bottom">
+                <p>10分钟前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;123评论</p>
+            </div>
+        </div>             
+    </div>    
+</body>
+<script>
+    var canvas=document.getElementById("canvas");
+    var middle=document.getElementById("middle");
+    var kongbai1=document.getElementById("kongbai1");
+    var img1=document.getElementById("img1");
+    var mm=document.getElementById("mm");
+    var box=document.getElementById("box");
+    var head=document.getElementById("head");
+    ctx = canvas.getContext("2d");
+    canvas.width = 400;
+    canvas.height = 470;
+    //画圆
+    ctx.beginPath();
+	ctx.arc(355,40,23,0*Math.PI,2*Math.PI);
+    ctx.fillStyle="#fd7546";
+	ctx.closePath();
+	ctx.fill();
+
+    ctx.font = "bold 14px 宋体";
+    ctx.fillStyle = "white";
+    ctx.fillText("15", 346, 40);
+
+    ctx.font = "bold 12px 宋体";
+    ctx.fillStyle = "white";
+    ctx.fillText("五月", 343, 53);
+
+    mm.onmouseover=function(){
+        img1.style.opacity="0.5";    
+        head.style.backgroundColor="rgb(59, 57, 57)";   
+        img1.style.transform="scale(1.4,1.4)";
+        mm.style.height='355px';
+        kongbai1.style.display="block";
+        
+    }
+    mm.onmouseout=function(){
+        img1.style.opacity="1";    
+        head.style.backgroundColor="";   
+        img1.style.transform="scale(1,1)";
+        mm.style.height='250px';
+        kongbai1.style.display="none";       
+    }
+</script>
+</html>
